@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=0.9" />
+  <title>İYİ Kİ DOĞDUNNNN</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: black;
+      color: white;
+      font-family: sans-serif;
+      overflow-x: hidden;
+      overflow-y: auto;
+      height: 100%;
+    }
+
+    #introCanvas {
+      position: fixed;
+      inset: 0;
+      z-index: 9999;
+      background: black;
+    }
+
+    #mainContent {
+      display: none;
+    }
+
+    #app {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+      text-align: center;
+    }
+
+    #cake-wrapper {
+      position: relative;
+      width: 320px;
+      max-width: 90vw;
+    }
+
+    .cake-image {
+      width: 100%;
+      display: block;
+    }
+
+    .flame {
+      position: absolute;
+      width: 30px;
+      height: 30px;
+      pointer-events: none;
+      animation: flicker 0.2s infinite alternate;
+    }
+
+    .flame img {
+      width: 110%;
+      height: 110%;
+      object-fit: contain;
+    }
+
+    .photo-screen {
+        width: 100%;
+        display: block;
+    }
+
+    #flame2 {
+      top: 25px;
+      left: 38px;
+      width: 20px;
+      height: 20px;
+    }
+
+    #flame1 { top: 47px; left: 98px; }
+    #flame2 { top: 63px; left: 125px; }
+    #flame3 { top: 40px; left: 145px; }
+    #flame4 { top: 50px; left: 185px; }
+
+    @keyframes flicker {
+      from { transform: translateX(-1px); }
+      to { transform: translateX(1px); }
+    }
+
+    .puff {
+      animation: puffOut 0.4s forwards;
+    }
+
+    @keyframes puffOut {
+      0% { transform: scale(1); opacity: 1; }
+      100% { transform: scale(3); opacity: 0; }
+    }
+
+    #message {
+      font-size: 1.2rem;
+      margin-top: 20px;
+      min-height: 1.5em;
+    }
+
+   #letter {
+    position: fixed;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgb(4, 3, 3) url("mektup.png") no-repeat center center;
+    background-size: cover;
+    display: none;
+    overflow-y: auto; /* önemli */
+    padding: 40px;
+    box-sizing: border-box;
+    text-align: center;
+    z-index: 10;
+    animation: fadeIn 1s ease forwards;
+    }
+
+
+
+
+
+   #letter .text {
+    margin: 0 auto;
+    max-width: 700px;
+    width: 100%;
+    padding: 20px 30px;
+    background: transparent;
+    border-radius: 10px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    word-wrap: break-word;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;    
+    }
+
+      /* uzun kelimeler taşmasın */
+
+  /* SCROLL BAR TASARIMI */
+
+
+/* Scrollbar - sadece WebKit tabanlı tarayıcılar için */
+    #letter .text::-webkit-scrollbar {
+        width: 10px;
+    }
+
+    #letter .text::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 10px;
+    }
+
+    #letter .text::-webkit-scrollbar-thumb {
+        background: linear-gradient(180deg, #91590c, #d98f17);
+        border-radius: 10px;
+        border: 2px solid transparent;
+        background-clip: content-box;
+    }   
+
+    #letter .text::-webkit-scrollbar-thumb:hover {
+        background: linear-gradient(180deg, #855308, #9c4e09);
+    }
+
+
+    @media (max-width: 600px) {
+        #letter .text {
+        padding: 15px 20px;
+        font-size: 16px;
+        }
+    }
+
+
+
+    #letter h3 {
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    #letter p {
+      font-size: 1.2rem;
+      line-height: 1.6;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- İlk 2 saniyelik efekt -->
+  <div id="introCanvas">
+    <canvas id="c"></canvas>
+  </div>
+
+  <!-- Gerçek doğum günü içeriği -->
+  <div id="mainContent">
+    <!-- Senin 2. HTML kodunun tamamı buraya yapıştırılacak (aynı şekilde kalacak) -->
+    
+    <!-- 🔻 ÖRNEK BAŞLANGIÇ -->
+    <div id="app">
+      <h2>Mumu Söndür: Üfle, Salla veya Dokun</h2>
+
+      <div id="cake-wrapper">
+        <img class="cake-image" src="pastaa.png" alt="Pasta">
+        <div class="flame" id="flame1"><img src="alev.gif" alt="Mum 1"></div>
+        <div class="flame" id="flame2"><img src="alev.gif" alt="Mum 2"></div>
+        <div class="flame" id="flame3"><img src="alev.gif" alt="Mum 3"></div>
+        <div class="flame" id="flame4"><img src="alev.gif" alt="Mum 4"></div>
+      </div>
+
+      <div id="message">Üfle, salla veya ekrana dokun.</div>
+    </div>
+
+    <div id="letter">
+      <div class="text">
+        <h3 style="color: rgb(62, 40, 31); font-weight: bold; font-size: 2rem;">🎉 İYİ Kİ DOĞDUN🎉</h3>
+        <div style="color: rgb(62, 40, 31); font-weight: normal; font-size: 1.2rem;">
+          Doğum günün kutlu olsunnnn🫶🫶<br>
+        Nice mutlu, sağlıklı, başarılı ve en önemlisi bizli senelereeeee 😏😏 <br>
+        Artık yetişkin oldun heee ama bu bir şeyi değiştirmez be küçük kardeşim, hâlâ seninle dalga geçmeye devam edeceğimmm kaçış yok<br>
+        Yeni yaşın sana bolca kahkaha, unutulmaz anılar ve bolca “vay be ben de büyüdüm ya!” dedirtecek sürprizler getirsin.<br>
+        Hep senin yanında olmaya ve seni desteklemeye devam edeceğim -mesela kodlamadan geçmen için destek belki atabilirim belki küçük bir şans🤏-<br>
+        Tekrardan doğum günün kutlu olsun iyi ki yollarımız kesişmiş iyi ki varsınn <br>
+        🧡💛💚🩵💙💜🖤🩶🤍🤎
+        </div>
+      </div>
+    </div>
+
+    <div id="photo-screen" style="display: none; flex-direction: column; align-items: center; justify-content: center; text-align: center; position: fixed; inset: 0; background: black; z-index: 15;">
+      <h2 style="margin-bottom: 20px; color: #b30059; font-size: 2rem;">Buyur pastan 🍰</h2>
+      <img src="al_pastan.jpg" alt="Sürpriz Fotoğraf" style="max-width: 80vw; max-height: 60vh; border-radius: 10px; box-shadow: 0 0 20px rgba(255, 255, 255, 0.3);">
+    </div>
+
+    <audio id="puffSound" src="https://cdn.pixabay.com/audio/2022/03/15/audio_28b0fbc1ae.mp3"></audio>
+  </div>
+
+  <!-- İlk efektin script'i -->
+  <script src="script.js"></script>
+
+  <!-- 2 saniye sonra geçiş yap -->
+  <script>
+    setTimeout(() => {
+      document.getElementById("introCanvas").remove(); // canvas tamamen silinir
+      document.getElementById("mainContent").style.display = "block";
+      initMic(); // mikrofon fonksiyonu sadece içerik geldikten sonra çalışsın
+    }, 11000);
+  </script>
+
+  <!-- Mikrofon ve hareket kontrol script’i (senin 2. kodundan alınmıştır) -->
+  <script>
+    const flames = [
+      document.getElementById('flame1'),
+      document.getElementById('flame2'),
+      document.getElementById('flame3'),
+      document.getElementById('flame4')
+    ];
+    const message = document.getElementById('message');
+    const letter = document.getElementById('letter');
+    const puffSound = document.getElementById('puffSound');
+    const app = document.getElementById('app');
+    let blowCount = 0;
+    let blowCooldown = false;
+    let ended = false;
+
+    function handleBlow() {
+      if (ended) return;
+      blowCount++;
+      blowCooldown = true;
+
+      if (blowCount === 1) {
+        message.textContent = "Biraz daha kuvvetli!";
+        flames.forEach(f => f.style.opacity = "0.5");
+      } else if (blowCount === 2) {
+        flames.forEach(f => f.classList.add("puff"));
+        puffSound.play().catch(() => {});
+        setTimeout(() => {
+          flames.forEach(f => f.style.display = "none");
+          message.textContent = "";
+          showLetter();
+        }, 500);
+        ended = true;
+        window.removeEventListener("devicemotion", motionHandler);
+      }
+
+      setTimeout(() => {
+        blowCooldown = false;
+      }, 1000);
+    }
+
+    function showLetter() {
+        app.style.display = "none";
+        document.getElementById("photo-screen").style.display = "flex";
+
+        setTimeout(() => {
+            document.getElementById("photo-screen").style.display = "none";
+            letter.style.display = "flex"; // sadece bu satırla göster
+            }, 3000);
+    }
+
+
+    function requestMotionPermission() {
+      if (typeof DeviceMotionEvent !== "undefined" && typeof DeviceMotionEvent.requestPermission === "function") {
+        DeviceMotionEvent.requestPermission().then(response => {
+          if (response === "granted") {
+            startMotion();
+            message.textContent = "Hareket sensörü açık!";
+          }
+        }).catch(() => {
+          message.textContent = "İzin verilmedi. Dokunarak devam edebilirsin.";
+        });
+      } else {
+        startMotion();
+      }
+    }
+
+    function startMotion() {
+      window.addEventListener("devicemotion", motionHandler);
+    }
+
+    function motionHandler(e) {
+      if (ended) return;
+      const acc = e.accelerationIncludingGravity;
+      if (!acc) return;
+      const total = Math.sqrt(acc.x ** 2 + acc.y ** 2 + acc.z ** 2);
+      if (!blowCooldown && total > 15) handleBlow();
+    }
+
+    window.addEventListener("click", () => {
+      if (!blowCooldown && !ended) handleBlow();
+    });
+
+    async function initMic() {
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        const audioContext = new (window.AudioContext || window.webkitAudioContext)();
+        const source = audioContext.createMediaStreamSource(stream);
+        const analyser = audioContext.createAnalyser();
+        source.connect(analyser);
+        analyser.fftSize = 256;
+        const dataArray = new Uint8Array(analyser.frequencyBinCount);
+
+        function checkVolume() {
+          analyser.getByteFrequencyData(dataArray);
+          let sum = 0;
+          for (let i = 0; i < dataArray.length; i++) sum += dataArray[i];
+          const avg = sum / dataArray.length;
+          if (!blowCooldown && avg > 35) handleBlow();
+          requestAnimationFrame(checkVolume);
+        }
+
+        checkVolume();
+        message.textContent = "Üfleyerek dene!";
+      } catch {
+        message.textContent = "Mikrofon yok. Sallayarak veya dokunarak dene.";
+        requestMotionPermission();
+      }
+    }
+  </script>
+</body>
+</html>
